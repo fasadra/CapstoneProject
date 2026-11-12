@@ -1,0 +1,62 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--maroon:#6D3232;--u:max(0.5px,min(0.05787vw,0.08953vh,1.2px))}
+body{font-family:'Inter',sans-serif;color:#fff;background:var(--maroon)}
+
+/* Latar foto + gradasi */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;gap:calc(var(--u)*30);padding:calc(var(--u)*44) calc(var(--u)*70) calc(var(--u)*50);background:url('../img/buah.png') center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(46,16,16,.92) 0%,rgba(46,16,16,.7) 55%,rgba(46,16,16,.5) 100%)}
+.hero>*{position:relative}
+
+/* Navbar */
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:calc(var(--u)*22)}
+.brand img{height:calc(var(--u)*80);min-height:44px;width:auto;aspect-ratio:654/627;object-fit:fill;object-view-box:inset(24.86% 25.35% 17.4% 29.49%)}
+.brand span{font-size:max(15px,calc(var(--u)*32));font-weight:700}
+.nav-btns{display:flex;gap:10px}
+.nav-btns a{display:grid;place-items:center;height:calc(var(--u)*62);min-height:42px;padding:0 calc(var(--u)*40);border-radius:999px;font-size:max(13px,calc(var(--u)*24));font-weight:700;text-decoration:none}
+.nav-btns .l{color:#fff;border:1.5px solid rgba(255,255,255,.65)}.nav-btns .l:hover{background:rgba(255,255,255,.14)}
+.nav-btns .r{background:#fff;color:#111}.nav-btns .r:hover{background:#F3E9E9}
+
+/* Tengah: headline kiri, scanner kanan */
+.stage{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:calc(var(--u)*60)}
+h1{font-size:max(40px,calc(var(--u)*124));line-height:.98;font-weight:800;letter-spacing:-.035em;max-width:9em;margin-bottom:calc(var(--u)*34)}
+.tag{font-size:max(16px,calc(var(--u)*34));font-weight:600;max-width:20em;line-height:1.3;color:#FFE3E5}
+
+/* Scanner */
+.scanner{display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*34)}
+.frame{--c:#fff;position:relative;width:calc(var(--u)*500);height:calc(var(--u)*560);min-width:240px;min-height:270px;max-width:100%;border-radius:calc(var(--u)*40);background:#2a1212;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.img{position:absolute;inset:0;border-radius:inherit;background-repeat:no-repeat;opacity:0;transition:opacity .7s ease}
+.img.on{opacity:1}
+.line{position:absolute;left:0;right:0;top:0;height:3px;background:#fff;box-shadow:0 0 18px 6px rgba(255,255,255,.55);opacity:0}
+.scanning .line{animation:sweep var(--scan,1200ms) ease-in-out forwards}
+@keyframes sweep{0%{top:0;opacity:1}88%{opacity:1}100%{top:calc(100% - 3px);opacity:0}}
+.corner{position:absolute;width:calc(var(--u)*64);height:calc(var(--u)*64);min-width:26px;min-height:26px;border:4px solid var(--c);transition:border-color .4s}
+.tl{top:-14px;left:-14px;border-right:0;border-bottom:0;border-radius:24px 0 0 0}
+.tr{top:-14px;right:-14px;border-left:0;border-bottom:0;border-radius:0 24px 0 0}
+.bl{bottom:-14px;left:-14px;border-right:0;border-top:0;border-radius:0 0 0 24px}
+.br{bottom:-14px;right:-14px;border-left:0;border-top:0;border-radius:0 0 24px 0}
+.result{position:absolute;left:50%;bottom:calc(var(--u)*30);transform:translate(-50%,10px);display:flex;align-items:center;justify-content:center;white-space:nowrap;padding:calc(var(--u)*14) calc(var(--u)*36);border:2px solid;border-radius:999px;font-size:max(13px,calc(var(--u)*24));font-weight:700;box-shadow:0 10px 24px rgba(0,0,0,.35);opacity:0;transition:opacity .4s,transform .4s}
+.result.show{opacity:1;transform:translate(-50%,0)}
+
+/* Warna kelas (sama dengan pil status di dashboard/stok) */
+.s{background:#E1F1E2;border-color:#7BC47F;color:#5FAE64}
+.k{background:#FFF3C2;border-color:#FFC800;color:#E0B000}
+.b{background:#F6D5D8;border-color:#C1192E;color:#C1192E}
+
+/* Pilihan status */
+.states{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.states button{padding:calc(var(--u)*14) calc(var(--u)*28);border:2px solid;border-radius:999px;font:700 max(13px,calc(var(--u)*22))/1 'Inter',sans-serif;cursor:pointer;opacity:.7;transition:opacity .3s,transform .3s}
+.states button:hover{opacity:1}
+.states button[aria-pressed="true"]{opacity:1;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+
+/* Fitur */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.35)}
+.feat div{padding:calc(var(--u)*24) calc(var(--u)*30) 0 0}
+.feat div+div{padding-left:calc(var(--u)*30);border-left:1px solid rgba(255,255,255,.35)}
+.feat b{display:block;font-size:max(15px,calc(var(--u)*28));margin-bottom:6px}
+.feat p{font-size:max(13px,calc(var(--u)*22));line-height:1.4;color:#F0D7D9}
+
+/* Responsif */
+@media(max-width:1000px){.hero{padding:20px}.stage{grid-template-columns:1fr;text-align:center;justify-items:center;gap:36px}h1{margin-inline:auto}.tag{margin-inline:auto}.frame{width:min(80vw,380px);height:min(88vw,420px)}.feat{grid-template-columns:1fr}.feat div,.feat div+div{padding:16px 0;border-left:0;border-top:1px solid rgba(255,255,255,.25)}.feat div:first-child{border-top:0}}
+@media(max-width:600px){h1{font-size:max(34px,10vw)}.brand span{font-size:13px;white-space:nowrap}.brand{gap:10px}.nav-btns a{padding:0 16px}}
+@media(prefers-reduced-motion:reduce){.scanning .line{animation:none}.img,.result{transition:none}}

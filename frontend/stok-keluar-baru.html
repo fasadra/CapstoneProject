@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catat Stok Keluar - FRESHSENSE AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/stok.css">
+</head>
+<body class="page-app" data-page="keluar">
+  <div class="shell">
+    <header id="topbar"></header>
+
+    <main class="main">
+      <section class="form-card">
+        <div class="form-in">
+          <h1>Stok Keluar</h1>
+
+          <div class="f3">
+            <div class="field2">
+              <label for="buah">Jenis Buah<span class="req">*</span></label>
+              <select id="buah" class="in2" required></select>
+              <p id="hintBuah" class="hint" hidden></p>
+              <p id="err-buah" class="err2" aria-live="polite"></p>
+            </div>
+            <div class="field2">
+              <label for="jumlah">Jumlah (kg)<span class="req">*</span></label>
+              <div class="num">
+                <input id="jumlah" class="in2" type="number" min="0" step="any" placeholder="10" inputmode="decimal">
+                <span class="st">
+                  <button type="button" data-step="1" aria-label="Tambah jumlah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+                  <button type="button" data-step="-1" aria-label="Kurangi jumlah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+                </span>
+              </div>
+              <p id="err-jumlah" class="err2" aria-live="polite"></p>
+            </div>
+            <div class="field2">
+              <span class="lb">Waktu Keluar<span class="req">*</span></span>
+              <div id="waktu" class="auto-box"></div>
+            </div>
+          </div>
+
+          <div class="field2">
+            <span class="lb">Alasan Keluar<span class="req">*</span></span>
+            <div id="alasan" class="alasan" role="group" aria-label="Alasan keluar">
+              <button type="button" class="rchip on" data-a="Terjual" aria-pressed="true">Terjual</button>
+              <button type="button" class="rchip" data-a="Terbuang" aria-pressed="false">Terbuang</button>
+            </div>
+            <p id="err-alasan" class="err2" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a class="pill-btn pill-line" href="stok.html?tab=keluar">Batal</a>
+          <button id="simpan" class="pill-btn pill-white" type="button">Simpan</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/stok-form.js"></script>
+</body>
+</html>

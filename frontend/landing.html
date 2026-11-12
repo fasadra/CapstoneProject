@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRESHSENSE AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+<main class="hero">
+  <nav>
+    <div class="brand"><img src="img/logofreshsenseai.png" alt=""><span>FRESHSENSE AI</span></div>
+    <div class="nav-btns"><a class="l" href="login.html">Login</a><a class="r" href="register.html">Register</a></div>
+  </nav>
+
+  <section class="stage">
+    <div class="copy">
+      <h1>Segar atau tidak? Biar AI yang cek.</h1>
+      <p class="tag">Smart Guidance System Checks the Freshness of Your Fruit</p>
+    </div>
+    <div class="scanner">
+      <div class="frame" id="frame" role="img" aria-label="Contoh pemindaian kesegaran buah">
+        <div class="img" id="imgA"></div>
+        <div class="img" id="imgB"></div>
+        <div class="line"></div>
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <div class="result" id="result"><b id="status"></b></div>
+      </div>
+      <div class="states" id="states"></div>
+    </div>
+  </section>
+
+  <div class="feat">
+    <div><b>Klasifikasi kesegaran</b><p>Unggah foto buah, hasilnya langsung keluar.</p></div>
+    <div><b>Stok masuk dan keluar</b><p>Catat dan pantau persediaan di satu tempat.</p></div>
+    <div><b>Laporan dan notifikasi</b><p>Tahu lebih dulu buah mana yang perlu segera dijual.</p></div>
+  </div>
+</main>
+
+<script>
+/* Ganti img/pos/filter di bawah dengan foto dari dataset RE:FRESH kamu, misalnya
+   img: "url('img/apel-segar.jpg')", pos: "center", size: "cover", filter: "none" */
+var ITEMS = [
+  { status: 'Segar',        cls: 's', color: '#7BC47F', img: "url('img/jeruk.jpg')", pos: '58% 38%', size: '260%', filter: 'none' },
+  { status: 'Kurang segar', cls: 'k', color: '#FFC800', img: "url('img/apel.jpg')", pos: '12% 2%',  size: '300%', filter: 'sepia(.4) saturate(.8)' },
+  { status: 'Busuk',        cls: 'b', color: '#C1192E', img: "url('img/stroberi.jpg')", pos: '40% 100%', size: '340%', filter: 'sepia(.7) brightness(.78) saturate(.85) hue-rotate(-10deg)' }
+];
+/* ATUR WAKTU DI SINI (satuan milidetik, 1000 = 1 detik)
+   SCAN_MS = lama garis scan bergerak dari atas ke bawah
+   HOLD_MS = lama hasil (Segar / Kurang segar / Busuk) tampil sebelum pindah ke buah berikutnya */
+var SCAN_MS = 1200, HOLD_MS = 2200;
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.style.setProperty('--scan', SCAN_MS + 'ms');
+
+var frame = document.getElementById('frame');
+var layers = [document.getElementById('imgA'), document.getElementById('imgB')];
+var result = document.getElementById('result');
+var statusEl = document.getElementById('status');
+var statesEl = document.getElementById('states');
+var current = -1, layer = 0, timerReveal, timerNext;
+
+ITEMS.forEach(function (it, i) {
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = it.cls;
+  b.setAttribute('aria-pressed', 'false');
+  b.textContent = it.status;
+  b.addEventListener('click', function () { show(i); });
+  statesEl.appendChild(b);
+});
+
+function show(i) {
+  clearTimeout(timerReveal); clearTimeout(timerNext);
+  current = i;
+  var it = ITEMS[i];
+
+  /* ganti gambar dengan crossfade */
+  var next = layers[1 - layer];
+  next.style.backgroundImage = it.img;
+  next.style.backgroundPosition = it.pos;
+  next.style.backgroundSize = it.size;
+  next.style.filter = it.filter;
+  next.classList.add('on');
+  layers[layer].classList.remove('on');
+  layer = 1 - layer;
+
+  /* tombol status */
+  Array.prototype.forEach.call(statesEl.children, function (b, k) {
+    b.setAttribute('aria-pressed', k === i ? 'true' : 'false');
+  });
+
+  /* mulai scan ulang */
+  result.classList.remove('show');
+  frame.style.setProperty('--c', '#fff');
+  frame.classList.remove('scanning');
+  void frame.offsetWidth;
+  frame.classList.add('scanning');
+
+  /* tampilkan hasil setelah garis scan selesai */
+  timerReveal = setTimeout(function () {
+    statusEl.textContent = it.status;
+    result.classList.remove('s', 'k', 'b');
+    result.classList.add(it.cls);
+    frame.style.setProperty('--c', it.color);
+    result.classList.add('show');
+  }, reduce ? 300 : SCAN_MS);
+
+  timerNext = setTimeout(function () { show((i + 1) % ITEMS.length); }, (reduce ? 300 : SCAN_MS) + HOLD_MS);
+}
+
+show(0);
+</script>
+</body>
+</html>

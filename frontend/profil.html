@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil - FRESHSENSE AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/stok.css">
+  <link rel="stylesheet" href="css/profil.css">
+</head>
+<body class="page-app" data-page="profil">
+  <div class="shell">
+    <header id="topbar"></header>
+
+    <main class="main profil-main">
+      <section class="form-card profil-card">
+        <div class="form-in">
+          <h1>Profil</h1>
+          <div class="f2">
+            <div class="field2">
+              <label for="nama">Nama<span class="req">*</span></label>
+              <input id="nama" class="in2" type="text" autocomplete="name">
+              <p id="err-nama" class="err2" aria-live="polite"></p>
+            </div>
+            <div class="field2">
+              <label for="username">Username<span class="req">*</span></label>
+              <input id="username" class="in2" type="text" autocomplete="username">
+              <p id="err-username" class="err2" aria-live="polite"></p>
+            </div>
+            <div class="field2">
+              <label for="email">Email<span class="req">*</span></label>
+              <input id="email" class="in2" type="email" autocomplete="email">
+              <p id="err-email" class="err2" aria-live="polite"></p>
+            </div>
+            <div class="field2">
+              <label for="telepon">Telepon<span class="req">*</span></label>
+              <input id="telepon" class="in2" type="tel" autocomplete="tel">
+              <p id="err-telepon" class="err2" aria-live="polite"></p>
+            </div>
+            <div class="field2">
+              <label for="role">Role<span class="req">*</span></label>
+              <input id="role" class="in2" type="text" readonly>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button id="batal" class="pill-btn pill-line" type="button">Batal</button>
+          <button id="simpan" class="pill-btn pill-white" type="button">Simpan</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/profil.js"></script>
+</body>
+</html>

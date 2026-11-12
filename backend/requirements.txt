@@ -1,0 +1,14 @@
+fastapi==0.143.0
+uvicorn[standard]==0.54.0
+sqlalchemy==2.1.4
+alembic==1.20.0
+psycopg[binary]==3.3.6
+pydantic-settings==2.15.0
+python-multipart==0.0.32
+tzdata==2026.5
+argon2-cffi==25.1.0     # hash sandi (Tahap 3)
+itsdangerous==2.2.0     # tanda tangan cookie sesi (Tahap 3)
+
+# Pengujian
+pytest==9.1.1
+httpx==0.28.1

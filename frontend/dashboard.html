@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - FRESHSENSE AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="page-dashboard">
+  <div class="shell">
+
+    <header id="topbar"></header>
+
+    <div class="greet">
+      <h1>Halo, Admin</h1>
+      <span class="date-pill" id="today"></span>
+    </div>
+
+    <!-- Kartu ringkasan (diisi otomatis dari data) -->
+    <section class="stats" aria-label="Ringkasan">
+      <article class="stat stat--dark">
+        <div class="stat-title">Total Cek Hari Ini
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2v10h10"/></svg>
+        </div>
+        <div class="stat-value" id="totalScan">-</div>
+        <div class="stat-unit">Scan</div>
+      </article>
+
+      <article class="stat">
+        <div class="stat-title">Buah Segar</div>
+        <div class="stat-value" id="pctSegar">-</div>
+        <div id="trendSegar" class="trend neutral"><span>Memuat...</span></div>
+      </article>
+
+      <article class="stat">
+        <div class="stat-title">Buah Kurang Segar</div>
+        <div class="stat-value" id="pctKurang">-</div>
+        <div id="trendKurang" class="trend neutral"><span>Memuat...</span></div>
+      </article>
+
+      <article class="stat">
+        <div class="stat-title">Buah Busuk</div>
+        <div class="stat-value" id="pctBusuk">-</div>
+        <div id="trendBusuk" class="trend neutral"><span>Memuat...</span></div>
+      </article>
+    </section>
+
+    <section class="panels">
+
+      <article class="panel">
+        <h2>Notifikasi</h2>
+        <ul id="todo" class="todo"><li class="empty">Memuat...</li></ul>
+      </article>
+
+      <article class="panel">
+        <h2>Daftar Stok Masuk Buah</h2>
+        <div class="table-wrap">
+          <table class="stock-table">
+            <thead><tr><th>Buah</th><th>Masuk</th><th>Status</th><th>Tanggal</th></tr></thead>
+            <tbody id="stockBody"><tr><td colspan="4" class="empty">Memuat...</td></tr></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="analysis">
+        <div class="analysis-head">
+          <h2>Analisis</h2>
+          <div class="period" role="group" aria-label="Periode analisis">
+            <button type="button" class="on" data-period="minggu" aria-pressed="true">Minggu Ini</button>
+            <button type="button" data-period="bulan" aria-pressed="false">Bulan Ini</button>
+          </div>
+        </div>
+        <div id="bars" class="analysis-inner"></div>
+      </article>
+
+    </section>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

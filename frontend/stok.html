@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stok - FRESHSENSE AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/stok.css">
+</head>
+<body class="page-app">
+  <div class="shell">
+    <header id="topbar"></header>
+
+    <main class="main">
+      <section class="stok-card">
+        <div class="stok-head">
+          <h1>Daftar Stok Buah</h1>
+          <button id="tabMasuk" class="pill-btn pill-white" type="button" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7 7 17M7 8v9h9"/></svg>
+            Stok Masuk
+          </button>
+          <button id="tabKeluar" class="pill-btn pill-line" type="button" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            Stok Keluar
+          </button>
+          <span class="grow"></span>
+          <a id="addBtn" class="pill-btn pill-white" href="stok-masuk-baru.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            <span id="addTxt">Catat Stok Masuk</span>
+          </a>
+          <button id="dlBtn" class="round-white" type="button" aria-label="Unduh data (CSV)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>
+          </button>
+        </div>
+
+        <div id="sum" class="sum"></div>
+
+        <div class="tbl-panel">
+          <div id="chips" class="chips"></div>
+          <div id="tbl" class="tbl-wrap"></div>
+          <div id="pager" class="pager"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/stok.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubah Kata Sandi - FRESHSENSE AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/stok.css">
+  <link rel="stylesheet" href="css/profil.css">
+</head>
+<body class="page-app" data-page="sandi">
+  <div class="shell">
+    <header id="topbar"></header>
+
+    <main class="main profil-main">
+      <section class="form-card profil-card sempit">
+        <div class="form-in">
+          <h1>Ubah Kata Sandi</h1>
+
+          <div class="field2">
+            <label for="lama">Kata Sandi Lama<span class="req">*</span></label>
+            <div class="pw"><input id="lama" class="in2" type="password" autocomplete="current-password"></div>
+            <p id="err-lama" class="err2" aria-live="polite"></p>
+          </div>
+          <div class="field2">
+            <label for="baru">Kata Sandi Baru<span class="req">*</span></label>
+            <div class="pw"><input id="baru" class="in2" type="password" autocomplete="new-password"></div>
+            <p id="err-baru" class="err2" aria-live="polite"></p>
+          </div>
+          <div class="field2">
+            <label for="konfirmasi">Konfirmasi Kata Sandi Baru<span class="req">*</span></label>
+            <div class="pw"><input id="konfirmasi" class="in2" type="password" autocomplete="new-password"></div>
+            <p id="err-konfirmasi" class="err2" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button id="batal" class="pill-btn pill-line" type="button">Batal</button>
+          <button id="simpan" class="pill-btn pill-white" type="button">Simpan</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/profil.js"></script>
+</body>
+</html>

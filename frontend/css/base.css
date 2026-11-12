@@ -1,0 +1,243 @@
+/* Dipakai oleh SEMUA halaman */
+:root {
+  --brand: #C1192E;
+  --maroon: #6D3232;
+  --maroon-soft: #7E4848;
+  --maroon-line: #D9A5A9;
+  --pink: #FFD6DA;
+  --u: max(0.5px, min(0.05787vw, 0.08953vh, 1.2px));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+  /* Latar lembut dengan cahaya blur: pink di atas, sentuhan kuning di sudut-sudut */
+  background-color: #EBBFC4;
+  background-image:
+    /* BARU: kuning di pojok kiri atas */
+    radial-gradient(30vw 34vh at 0% 0%, rgba(255, 207, 94, 0.5) 0%, rgba(255, 207, 94, 0) 70%),
+    radial-gradient(55vw 42vh at 18% 108%, rgba(255, 207, 94, 0.6) 0%, rgba(255, 207, 94, 0) 70%),
+    radial-gradient(50vw 40vh at 88% 106%, rgba(255, 220, 120, 0.5) 0%, rgba(255, 220, 120, 0) 70%),
+    radial-gradient(60vw 50vh at 8% 0%, rgba(250, 205, 211, 0.85) 0%, rgba(250, 205, 211, 0) 70%),
+    radial-gradient(55vw 55vh at 100% 8%, rgba(246, 214, 160, 0.6) 0%, rgba(246, 214, 160, 0) 70%),
+    radial-gradient(70vw 60vh at 50% 105%, rgba(218, 140, 156, 0.55) 0%, rgba(218, 140, 156, 0) 70%),
+    linear-gradient(180deg, #F5D2D4 0%, #EBBFC4 55%, #E1AAB2 100%);
+  background-attachment: fixed;
+}
+
+.hidden, [hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* ---------- Navbar atas ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(var(--u) * 20);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 22);
+  min-width: 0;
+  color: var(--maroon);
+  text-decoration: none;
+}
+.brand img {
+  display: block;
+  height: calc(var(--u) * 80);
+  min-height: 52px;
+  width: auto;
+  aspect-ratio: 654 / 627;
+  object-fit: fill;
+  object-view-box: inset(24.86% 25.35% 17.4% 29.49%); /* buang ruang kosong di sekeliling logo */
+  /* logo aslinya putih; ubah ke maroon agar terbaca di latar terang */
+  filter: brightness(0) invert(24%) sepia(35%) saturate(900%) hue-rotate(312deg) brightness(0.95);
+}
+.brand span { font-size: max(15px, calc(var(--u) * 32)); font-weight: 700; letter-spacing: 0.01em; white-space: nowrap; }
+.topbar-right { display: flex; align-items: center; gap: calc(var(--u) * 19); }
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 14);
+  height: calc(var(--u) * 82);
+  min-height: 48px;
+  padding: 0 calc(var(--u) * 11);
+  background: #fff;
+  border-radius: 999px;
+  border: 1px solid rgba(109, 50, 50, 0.14);
+  box-shadow: 0 8px 22px rgba(109, 50, 50, 0.16), 0 2px 6px rgba(109, 50, 50, 0.08);
+}
+.nav-pill a {
+  display: flex;
+  align-items: center;
+  height: calc(var(--u) * 68);
+  min-height: 38px;
+  padding: 0 calc(var(--u) * 46);
+  border-radius: 999px;
+  color: #111;
+  text-decoration: none;
+  font-size: max(13px, calc(var(--u) * 26));
+  font-weight: 700;
+}
+.nav-pill a:hover { background: rgba(0, 0, 0, 0.06); }
+.nav-pill a.active { background: var(--maroon); color: #fff; }
+
+/* button (notifikasi dan profil) */
+.round-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 82);
+  height: calc(var(--u) * 82);
+  min-width: 48px;
+  min-height: 48px;
+  background: #fff;
+  border: 1px solid rgba(109, 50, 50, 0.14);
+  border-radius: 50%;
+  box-shadow: 0 8px 22px rgba(109, 50, 50, 0.16), 0 2px 6px rgba(109, 50, 50, 0.08);
+  color: #111;
+  text-decoration: none;
+  cursor: pointer;
+}
+.round-btn svg { width: calc(var(--u) * 36); height: calc(var(--u) * 36); min-width: 20px; min-height: 20px; }
+.round-btn.is-active {
+  background: var(--maroon);
+  border-color: #fff;
+  color: #fff;
+  box-shadow: inset 0 0 0 calc(var(--u) * 6) #fff, 0 8px 22px rgba(109, 50, 50, 0.16), 0 2px 6px rgba(109, 50, 50, 0.08);
+}
+.notif-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  background: var(--brand);
+  border: 2px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Menu profil (muncul saat ikon orang diklik) */
+.profile-wrap { position: relative; }
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 50;
+  min-width: 220px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+.menu a, .menu button {
+  display: flex;
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  color: #111;
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu a:hover, .menu button:hover { background: #f2f2f2; }
+.menu hr { border: 0; border-top: 1px solid #e5e5e5; margin: 6px 4px; }
+.menu .danger { color: var(--brand); font-weight: 600; }
+
+/* Pesan singkat di bawah layar */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 100;
+  max-width: 90vw;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.toast.err { background: var(--brand); }
+
+/* ---------- Komposisi tiga kelas (pil berwarna, kelas 0% disembunyikan) ---------- */
+.comp { display: inline-flex; align-items: center; gap: calc(var(--u) * 8); }
+.comp i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(var(--u) * var(--w, 70));
+  height: calc(var(--u) * 29);
+  min-height: 19px;
+  padding: 0 calc(var(--u) * 8);
+  border: 1.5px solid;
+  border-radius: 999px;
+  font-size: max(10px, calc(var(--u) * 18));
+  font-style: normal;
+  font-weight: 700;
+}
+.comp .s { background: #E1F1E2; border-color: #7BC47F; color: #5FAE64; }
+.comp .k { background: #FFF3C2; border-color: #FFC800; color: #E0B000; }
+.comp .b { background: #F6D5D8; border-color: #C1192E; color: #C1192E; }
+.comp.lg i { min-width: calc(var(--u) * var(--w, 70) * 1.55); height: calc(var(--u) * 46); min-height: 28px; font-size: max(12px, calc(var(--u) * 24)); }
+
+/* ---------- Badge status ---------- */
+.badge {
+  display: inline-block;
+  padding: calc(var(--u) * 3) calc(var(--u) * 14);
+  border: 1.5px solid;
+  border-radius: 999px;
+  font-size: max(11px, calc(var(--u) * 19));
+  font-weight: 700;
+  white-space: nowrap;
+}
+.badge-terjual  { background: #DCEBFF; border-color: #3C86F5; color: #1B6FE8; }
+.badge-terbuang { background: #F6D5D8; border-color: #C1192E; color: #C1192E; }
+.badge-belum    { background: #EEE; border: 1.5px dashed #999; color: #555; font-weight: 400; }
+
+/* ---------- Halaman aplikasi (Stok, Laporan, Notifikasi, Profil): pas satu layar ---------- */
+.page-app { height: 100vh; height: 100dvh; overflow: hidden; }
+.page-app .shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: calc(var(--u) * 41);
+  width: calc(100% - 5.7vw);
+  height: 100%;
+  margin: 0 auto;
+  padding: calc(var(--u) * 53) 0 calc(var(--u) * 42);
+}
+.page-app .main { min-height: 0; display: flex; justify-content: center; }
+
+/* Halaman yang boleh lebih panjang dari layar (hasil klasifikasi) */
+.page-app.page-scroll { height: auto; min-height: 100vh; overflow: auto; }
+.page-scroll .shell { display: block; height: auto; }
+.page-scroll .main { margin-top: calc(var(--u) * 41); }
+
+@media (max-width: 900px), (max-height: 520px) {
+  .page-app { height: auto; min-height: 100vh; overflow: auto; }
+  .page-app .shell { display: block; height: auto; }
+  .page-app .main { margin-top: 20px; }
+  .topbar { flex-wrap: wrap; }
+}

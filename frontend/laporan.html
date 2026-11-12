@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan - FRESHSENSE AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/stok.css">
+  <link rel="stylesheet" href="css/laporan.css">
+</head>
+<body class="page-app">
+  <div class="shell">
+    <header id="topbar"></header>
+
+    <main class="main">
+      <section class="stok-card">
+        <div class="stok-head">
+          <h1>Laporan Stok</h1>
+          <button id="pMinggu" class="pill-btn pill-white" type="button">Minggu Ini</button>
+          <button id="pBulan" class="pill-btn pill-line" type="button">Bulan Ini</button>
+
+          <span class="pop-wrap">
+            <button id="pTanggal" class="pill-btn pill-line" type="button" aria-haspopup="dialog" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M16 3v4M8 3v4M4 11h16"/></svg>
+              <span id="tglTxt">Pilih Tanggal</span>
+            </button>
+            <div id="pop" class="pop" role="dialog" aria-label="Pilih rentang tanggal" hidden>
+              <div class="field2">
+                <label for="dari">Dari tanggal</label>
+                <input id="dari" class="in2" type="date">
+              </div>
+              <div class="field2">
+                <label for="sampai">Sampai tanggal</label>
+                <input id="sampai" class="in2" type="date">
+              </div>
+              <p id="err-tgl" class="err2" aria-live="polite"></p>
+              <div class="btns">
+                <button id="batalTgl" class="pill-btn pill-outline" type="button">Batal</button>
+                <button id="terapkan" class="pill-btn pill-maroon" type="button">Terapkan</button>
+              </div>
+            </div>
+          </span>
+
+          <span class="grow"></span>
+          <button id="dlBtn" class="round-white" type="button" aria-label="Unduh laporan (CSV)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>
+          </button>
+        </div>
+
+        <div id="sum" class="sum"></div>
+
+        <div class="tbl-panel no-chips">
+          <div id="tbl" class="tbl-wrap"></div>
+          <div id="pager" class="pager"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/laporan.js"></script>
+</body>
+</html>

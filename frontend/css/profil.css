@@ -1,0 +1,30 @@
+/* Halaman Profil dan Ubah Kata Sandi */
+.page-app .main.profil-main { align-items: flex-start; padding-top: calc(var(--u) * 46); }
+.profil-card { width: min(100%, calc(var(--u) * 965)); }
+.profil-card.sempit { width: min(100%, calc(var(--u) * 747)); }
+.profil-card .form-in { flex: none; padding: calc(var(--u) * 38) calc(var(--u) * 40) calc(var(--u) * 28); }
+.profil-card .form-in h1 { margin-bottom: calc(var(--u) * 32); }
+.f2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: calc(var(--u) * 63);
+}
+.in2[readonly] { background: #F0F0F0; color: #555; cursor: not-allowed; }
+
+.pw { position: relative; }
+.pw .in2 { padding-right: calc(var(--u) * 70); }
+.pw .toggle {
+  position: absolute;
+  right: calc(var(--u) * 24);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  padding: 2px;
+  border: 0;
+  background: none;
+  color: #111;
+  cursor: pointer;
+}
+.pw .toggle svg { width: calc(var(--u) * 28); height: calc(var(--u) * 28); min-width: 18px; min-height: 18px; }
+
+@media (max-width: 900px) { .f2 { grid-template-columns: 1fr; } }
